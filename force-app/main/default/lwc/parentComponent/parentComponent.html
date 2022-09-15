@@ -1,0 +1,11 @@
+<template>
+
+    <lightning-card title="Parent Component" class="slds-border_bottom slds-p-around_medium">
+        <lightning-input type="text" placeholder="Enter your Name" name="lastname" value={lastName} onchange={setName}></lightning-input>
+        <lightning-input type="number" placeholder="ENter your Age" name="age" value={age} onchange={setAge}></lightning-input>
+        <lightning-button variant="success" label="Send Data" onclick={sendToChild}></lightning-button>
+        <c-child-component-1 studentname={lastName} onsendmsgtoparent={forwardMessage}></c-child-component-1>  
+        <c-child-component-2></c-child-component-2>
+    </lightning-card>
+    
+</template>

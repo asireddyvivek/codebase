@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        THis is child component
+        From Parent:<b>{detailsFromParent}</b>
+        <br/>{detailsFromParentSec}
+        <lightning-input type="number" name="age" value={age} onchange={setAge}></lightning-input>
+        <lightning-button label="Send to Parent" onclick={sendToParent} variant="success"></lightning-button>
+        <p>Entered age: {age}</p>
+    </lightning-card> 
+</template>

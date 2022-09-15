@@ -1,0 +1,73 @@
+<template>
+    <div class="slds-p-around_medium">
+    <lightning-card>
+        
+        <span class="slds-m-left_large">
+            <lightning-icon icon-name="action:approval" alternative-text="Approved" title="Approved"></lightning-icon>
+            <b class="slds-p-left_large">Shops Manager</b>
+        </span>
+        <br/>
+        <div class="slds-m-top_xx-large">
+        <button class="slds-button slds-button_brand slds-m-left_xx-large slds-m-right_large" onclick={getRecords}>Get all shops</button>
+        <button class="slds-button slds-button_brand slds-m-right_large" onclick={showSearchBox}>Search</button>
+        <button class="slds-button slds-button_brand" onclick={createRecords}>Add new</button>
+        </div>
+
+        <div class="searchbox slds-m-around_xx-large" if:true={showSearch} >
+            <lightning-input type="text" label="Search by name:" onchange={getFilteredRecords}  style="width: 25%; height:25%;"></lightning-input>
+            <button class="slds-button slds-button_brand slds-m-top_x-small" name="search" onclick={searchRecords}>Search</button>
+        </div>
+
+        <div class="slds-m-top_large slds-p-around_large">
+            <!-- if:true={showRecords} -->
+        <table border="3" >
+            <tr>
+                <th class="slds-p-left_medium"> Name </th>
+                <th class="slds-p-left_medium"> Code </th>
+                <th class="slds-p-left_medium"> Type </th>
+                <th class="slds-p-left_medium"> Owner Name </th>
+                <th class="slds-p-left_medium"> Annual Turn Over </th>
+                <th class="slds-p-left_medium"> Address </th>
+            </tr>
+            <template for:each={shopRecords} for:item="shop">
+                <tr class="slds-m-top_large" key={shop.Id}>
+                    <td class="slds-p-left_medium">
+                        {shop.Name}
+                    </td>
+                    <td class="slds-p-left_medium">
+                        {shop.Shop_Code__c}
+                    </td>
+                    <td class="slds-p-left_medium">
+                        {shop.Shop_Type__c}
+                    </td>
+                    <td class="slds-p-left_medium">
+                        {shop.Owner_Name__c}
+                    </td>
+                    <td class="slds-p-left_medium">
+                        {shop.Annual_Turnover__c}
+                    </td>
+                    <td class="slds-p-left_medium">
+                        <template if:true={shop.Address__c}>
+                            {shop.Address__r.Full_Address__c}
+                        </template>
+                        
+                      
+                    </td>
+                    <td>
+                        
+                        <button class="slds-button  slds-m-left_large" data-id={shop.Id} onclick={editRecord}>Edit</button>
+                        <button class="slds-button  slds-m-left_small" data-id={shop.Id} onclick={handleDelete}>Delete</button>
+                    </td>
+                </tr>
+            </template>
+        </table>
+    </div>
+
+    
+
+    <div class="modal">
+        <c-modal-component onrefreshtable={refreshRecords}></c-modal-component>
+    </div>
+    </lightning-card>    
+    </div>
+</template>

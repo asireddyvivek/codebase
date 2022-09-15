@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="CRUD_Operations">
+        <div class = "slds-p-around_small">
+            <br>
+            
+            <table>
+                <tr>
+                    <th> Name </th>
+                    <th> Age </th>
+                    <th> Choose </th>
+                </tr>
+                <template for:each={agedAccounts} for:item="aAcc">
+                    <tr key={aAcc.Id}>
+                        <td>
+                            {aAcc.Name}
+                        </td>
+                        <td>
+                            {aAcc.Age__c}
+                        </td>
+                        <td>
+                            <lightning-button variant="Base" label="Select" data-id={aAcc.Id} onclick={selectAccount} ></lightning-button>
+                        </td>
+                    </tr>
+                    
+                </template>
+            </table>
+            
+            <br>
+            <lightning-input type="text" label="Account Name" name="accName" value={accRecord.Name} onchange={accNameChange} placeholder="enter name of the account"></lightning-input>
+            <br>
+            <lightning-input type="number" label="Account Age" name="accAge" value={accRecord.Age__c} onchange={accAgeChange} placeholder="enter age of the account"></lightning-input>
+            <br>
+            <template if:true={accRecord.Id}> the selected account id is {accRecord.Id} </template>
+            <br>
+            <br>
+            <lightning-button label="Insert" variant="success" onclick={handleInsertAccount} ></lightning-button>
+            <div class="space">
+            </div>
+            <lightning-button label="Update" variant="neutral" onclick={handleUpdateAccount} ></lightning-button>
+            <div class="space">
+            </div>
+            <lightning-button label="Delete" variant="destructive" onclick={handleDeleteAccount} ></lightning-button>
+            <br>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Child Component1" class="slds-border_bottom">
+        <p>Data from Parent onchage:<b>{studentname}</b></p>
+        <p>Data from Parent onclick:<b>{lastname}</b></p>
+
+        <lightning-input type="text" name="name1" value="msg1" onchange={setMsg}></lightning-input>
+        <lightning-button variant="brand" label="Send Message" onclick={sendMessage}></lightning-button>
+    </lightning-card>
+    
+</template>

@@ -1,0 +1,76 @@
+<template>
+    <template  if:true={showmodal}>
+        <lightning-card>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <!-- Header Start -->
+            
+              
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <lightning-button-icon
+                      class="slds-modal__close" title="Close" icon-name="utility:close" icon-class="slds-button_icon-inverse"
+                      onclick={handleDialogClose}></lightning-button-icon>
+          
+                    <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+                      New Shop
+                    </h2>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+    
+                <lightning-layout data-id="div1" class="slds-m-around_medium" multiple-rows="true">
+                
+                    <lightning-layout-item size="5" small-device-size="5" medium-device-size="5" large-device-size="5">
+                        <lightning-input type="text" label="Shop Name" name="name" value={shop.Name}  onchange={handleInput}></lightning-input>
+                        <lightning-input type="text" label="Owner Name" name="owner" value={shop.Owner_Name__c} onchange={handleInput}></lightning-input>
+                        <lightning-input type="text" label="Annual Turn Over" name="turnover" value={shop.Annual_Turnover__c} onchange={handleInput}></lightning-input>
+                    
+                        <br>
+                        Address:
+                        <br>
+                        <lightning-input type="text" label="Street Name" name="street" value={addr.Street__c} onchange={handleInput} style="margin-top: 5%;"></lightning-input>
+                        <lightning-combobox
+                        name="state"
+                        label="State"
+                        
+                        placeholder="Select State"
+                        value={addr.State__c}
+                        options={options}
+                        onchange={handleInput}></lightning-combobox>
+
+                    </lightning-layout-item>
+                    <lightning-layout-item style="margin-left: 5%;" size="5" small-device-size="5" medium-device-size="5" large-device-size="5">
+                        <!-- <lightning-input type="text" label="Type" name="type" value={shop.Shop_Type__c} onchange={handleInput}></lightning-input> -->
+                        <lightning-input type="text" placeholder="Enter number" label="Code" name="code" value={shop.Shop_Code__c} onchange={handleInput}></lightning-input>
+                    
+                        <lightning-combobox
+                        name="type"
+                        label="Type"
+                        
+                        placeholder="Select Shop Type"
+                        value={shop.Shop_Type__c}
+                        options={types}
+                        onchange={handleInput}></lightning-combobox>
+
+                                            
+                        <br/><br/><br/>
+                        <lightning-input type="text" class="slds-m-top_xx-large" label="City" name="city" value={addr.City__c} onchange={handleInput}></lightning-input>
+                        <lightning-input type="text" placeholder="Enter number" label="Pincode" name="pincode" value={addr.Pincode__c} onchange={handleInput}></lightning-input>
+    
+                    </lightning-layout-item>
+    
+                </lightning-layout>
+                
+                </div>
+                <div class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" onclick={saveRecord}>Save</button>
+                <button class="slds-button slds-button_brand" onclick={closeHandler}>Cancel</button>
+                </div>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </lightning-card>
+    </template>
+
+    
+    
+</template>

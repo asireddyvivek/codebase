@@ -1,0 +1,14 @@
+<template>
+
+    <lightning-card class="slds-p-around_small" title="Create Account" icon-name="standard:account">
+        <div class="slds-p-around_medium">
+            <lightning-input type="text" label="Name" name="accName" onchange={handleChange} required="required"></lightning-input>
+            <lightning-input type="text" label="Mobile" name="accMobile" onchange={handleChange}></lightning-input>
+            <lightning-input type="text" label="Typee" name="accType" onchange={handleChange}></lightning-input>
+            <lightning-input type="text" label="Industry" name="accIndustry" onchange={handleChange}></lightning-input>
+            <br/>
+            <lightning-button label="Save" onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>

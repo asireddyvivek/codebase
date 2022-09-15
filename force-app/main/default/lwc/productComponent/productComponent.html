@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Prodcut Details" class="slds-p-around_medium">
+        <div class="slds-p-around_medium">
+        <lightning-input type="text" label="Product Name" name="Name" value={productName} onchange={changeHandler}></lightning-input>
+        <lightning-input type="number" label="Product Number" name="Number" value={productNumber} onchange={changeHandler}></lightning-input>
+        <lightning-combobox label="Product Type" name="Type" options={picklistValues} value={productType} onchange={changeHandler}></lightning-combobox>
+        <lightning-button label="Insert" name="insert" variant="success" onclick={saveDetails}></lightning-button>
+        <lightning-button label="Update" name="update" variant="neutral" onclick={saveDetails}></lightning-button>
+        <lightning-button label="Delete" name="delete" variant="destructive" onclick={saveDetails}></lightning-button>
+        
+        </div>
+    </lightning-card>
+</template>

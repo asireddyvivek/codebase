@@ -1,0 +1,48 @@
+<template>
+    <template if:true={showModal}>
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-labelledby="modal-heading-01"
+          aria-modal="true"
+          aria-describedby="modal-content-id-1"
+          class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+            <!-- Header Start -->
+            <header class="slds-modal__header">
+              <lightning-button-icon
+                class="slds-modal__close" title="Close" icon-name="utility:close" icon-class="slds-button_icon-inverse"
+                onclick={handleDialogClose}></lightning-button-icon>
+    
+              <h2 class="slds-text-heading_medium slds-hyphenate header-string">
+                New Shop
+              </h2>
+            </header>
+            <!-- Header End -->
+            <div
+              class="slds-modal__content slds-p-around_medium"
+              id="modal-content-id-1">
+              <slot>
+                <lightning-input type="Text" label="Shop Name" name="Name"  onchange={handleInput}></lightning-input>
+            <lightning-input type="number" label="Code" name="Code"  onchange={handleInput}></lightning-input>
+            <lightning-input type="Text" label="Owner Name" name="Owner"  onchange={handleInput}></lightning-input>
+            <!-- <lightning-combobox label="Type" options={Type} name="" onchange={handleInput}></lightning-combobox> -->
+            <lightning-input type="Text" label="Annual Turnover" name="Turnover"  onchange={handleInput}></lightning-input>
+
+            <!-- Address: 
+            <lightning-input type="Text" label="Street Name" value={Street_Name} onchange={accept_street_name}></lightning-input>
+            <lightning-input type="Text" label="City" value={City} onchange={accept_city}></lightning-input>
+            <lightning-combobox label="State" options={State} onchange={accept_state}></lightning-combobox>
+            <lightning-input type="number" label="Pincode" value={Pincode} onchange={accept_pincode}></lightning-input>
+            <br>
+            <br>
+            <br> -->
+            <button class="slds-button slds-button_success" onclick={insert_details}>Save</button>
+            <button class="slds-button slds-button_destructive">Cancel</button>
+              </slot>
+            </div>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </template>
+</template>

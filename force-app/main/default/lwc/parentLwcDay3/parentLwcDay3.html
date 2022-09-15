@@ -1,0 +1,13 @@
+<template>
+    <lightning-card>
+        Name:<lightning-input type="text" name="Name" value={name1} onchange={setName}></lightning-input>
+        <p>Hi, {name1}</p>
+
+        <lightning-button label="Send to Child" variant="brand" onclick={sendToChild}></lightning-button>
+        <p>This is parent Component</p>
+        <hr>
+        <p>Data from child:<b>{age1}</b></p>
+
+        <c-child-lwc-day-3 details-from-parent-sec={name1} onsenddetailstoparent={processChildData}></c-child-lwc-day-3>
+    </lightning-card>    
+</template>
